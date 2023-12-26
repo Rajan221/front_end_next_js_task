@@ -1,0 +1,61 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 10px 10px #ddd;
+}
+
+#product {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.Menu {
+  display: flex;
+  align-items: center;
+}
+
+.Menu div {
+  margin-top: 20px;
+  margin-left: 55px;
+  font-weight: 500;
+  padding: 5px;
+}
+
+/* styling for the search box and form */
+
+#searchForm {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+#searchBox {
+  height: 35px;
+  width: 30vw;
+  border: 0.3px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+#searchBox:focus {
+  outline: none;
+}
+
+#searchButton {
+  height: 40px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+/* cart css */
+#cart {
+  background-color: black;
+  color: white;
+  padding: 15px;
+  font-size: 25px;
+  border-radius: 10px;
+}

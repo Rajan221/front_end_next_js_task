@@ -1,0 +1,28 @@
+#top {
+  margin-top: 3vh;
+
+  font-size: 30px;
+  padding: 10px;
+  font-weight: 400;
+  user-select: none;
+}
+
+.Cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  justify-content: space-between;
+  grid-row-gap: 50px;
+}
+
+.Link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.message {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 10vh;
+}
