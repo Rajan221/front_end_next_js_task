@@ -15,6 +15,7 @@ interface Product {
 
 interface ProductProps {
   searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // FUNCTION FOR FETCHING DATA
@@ -27,7 +28,7 @@ const fetchData = async (): Promise<Product[]> => {
 };
 
 // USING TANSTACK TO FETCH DATA
-const Product: React.FC<ProductProps> = ({ searchTerm }) => {
+const Product: React.FC<ProductProps> = ({ searchTerm, setSearchTerm }) => {
   const { isPending, error, data } = useQuery<Product[]>({
     queryKey: ["Data"],
     queryFn: fetchData,
@@ -47,6 +48,10 @@ const Product: React.FC<ProductProps> = ({ searchTerm }) => {
   const filteredData = data.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleGoBack = () => {
+    setSearchTerm("");
+  };
 
   return (
     <React.Fragment>
@@ -81,7 +86,15 @@ const Product: React.FC<ProductProps> = ({ searchTerm }) => {
             </Link>
           ))
         ) : (
-          <div className="noProd">No Products Found</div>
+          <div className="noProd">
+            No Products Found
+            <div
+              style={{ textDecoration: "underline", cursor: "pointer" }}
+              onClick={handleGoBack}
+            >
+              Go back
+            </div>
+          </div>
         )}
       </div>
     </React.Fragment>

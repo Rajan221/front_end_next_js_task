@@ -29,6 +29,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
               type="text"
               onChange={handleInputChange}
               value={searchValue}
+              placeholder="Search Your Products Here.."
             />
             <button id="searchButton" type="submit">
               Search

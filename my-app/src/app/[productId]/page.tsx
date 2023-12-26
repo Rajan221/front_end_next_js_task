@@ -21,26 +21,26 @@ interface Product {
 
 const Details: React.FC<ParamsType> = ({ params }) => {
   const [product, setProduct] = useState<Product | null>(null);
-  // const [recomList, setRecomList] = useState<Product | null>(null);
+  const [recomList, setRecomList] = useState<Product[]>([]);
 
-  // async function getProductsByCategory(category: string) {
-  //   try {
-  //     const response = await fetch(
-  //       `https://fakestoreapi.com/products/category/${category}`
-  //     );
-  //     if (!response.ok) {
-  //       throw new Error("Network response was not ok");
-  //     }
+  async function getProductsByCategory(category: string) {
+    try {
+      const response = await fetch(
+        `https://fakestoreapi.com/products/category/${category}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-  //     return response.json();
-  //   } catch (error) {
-  //     console.error(
-  //       `Error retrieving products in category ${category}:`,
-  //       error
-  //     );
-  //     throw error;
-  //   }
-  // }
+      return response.json();
+    } catch (error) {
+      console.error(
+        `Error retrieving products in category ${category}:`,
+        error
+      );
+      throw error;
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,9 +53,15 @@ const Details: React.FC<ParamsType> = ({ params }) => {
 
         productInfo.map((p) => {
           if (p.id == params.productId) {
-            // const recommend: Product[] = getProductsByCategory(p.category);
-            // setRecomList(recommend);
             setProduct(p);
+
+            getProductsByCategory(p.category)
+              .then((recommendations) => {
+                setRecomList(recommendations);
+              })
+              .catch((error) => {
+                console.error("Error fetching recommendations:", error);
+              });
           }
         });
       } catch (error) {
@@ -107,28 +113,33 @@ const Details: React.FC<ParamsType> = ({ params }) => {
       )}
 
       {/* PRODUCTS SUGGESTIONS */}
-      {/* <div className="Cards">
-        {recomList.map((datas: Product) => (
-          <Link
-            className="Link"
-            href={{
-              pathname: "/product",
-              query: {
-                productId: datas.id,
-              },
-            }}
-            as={`/${encodeURIComponent(datas.id)}`}
-            key={datas.id}
-          >
-            <ProductCard
+      <div id="recomTitle">You might like these</div>
+      <div className="Cards">
+        {recomList && recomList.length > 0 ? (
+          recomList.map((datas: Product) => (
+            <Link
+              className="Link"
+              href={{
+                pathname: "/product",
+                query: {
+                  productId: datas.id,
+                },
+              }}
+              as={`/${encodeURIComponent(datas.id)}`}
               key={datas.id}
-              source={datas.image}
-              title={datas.title}
-              price={datas.price}
-            />
-          </Link>
-        ))}
-      </div> */}
+            >
+              <ProductCard
+                key={datas.id}
+                source={datas.image}
+                title={datas.title}
+                price={datas.price}
+              />
+            </Link>
+          ))
+        ) : (
+          <p>Browse More Products</p>
+        )}
+      </div>
     </div>
   );
 };

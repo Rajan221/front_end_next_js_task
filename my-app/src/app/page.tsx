@@ -21,7 +21,7 @@ function App(): JSX.Element {
       <main className={styles.container}>
         <Navigation onSearch={handleSearch} />
 
-        <Product searchTerm={searchTerm} />
+        <Product searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </main>
     </QueryClientProvider>
   );

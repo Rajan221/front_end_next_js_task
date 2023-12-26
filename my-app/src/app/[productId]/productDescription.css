@@ -76,6 +76,25 @@
   cursor: pointer;
 }
 
+#recomTitle {
+  font-size: 30px;
+}
+
+.Cards {
+  padding: 3vw;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /*4 CARDS PER ROW */
+  margin-left: 1vw;
+  justify-content: space-between;
+  grid-row-gap: 60px;
+}
+
+.Link {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media only screen and (max-width: 600px) {
   #prodContainer {
     display: block;
@@ -106,5 +125,14 @@
 
   .buttons div {
     font-size: 15px;
+  }
+
+  .Cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 10px;
+    justify-content: space-between;
+    grid-row-gap: 50px;
   }
 }
