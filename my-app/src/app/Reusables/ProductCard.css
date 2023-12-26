@@ -15,12 +15,14 @@
   box-shadow: 0 8px 10px #111;
 }
 
+/* PRODUCT IMAGE CSS */
 #image {
   height: 30vh;
   width: 20vw;
   object-fit: contain;
 }
 
+/* FOR INFORMATION SUCH AS TITLES PRICE  */
 #infos {
   margin-top: 5vh;
   width: 100%;
@@ -46,6 +48,7 @@
   color: rgb(15, 5, 124);
 }
 
+/* ADD TO CART BUTTON */
 #addToCart {
   height: 5vh;
   width: 100%;
@@ -62,4 +65,56 @@
 
 #addToCart:hover {
   background-color: #555;
+}
+
+/* FOR MOBILES */
+@media only screen and (max-width: 600px) {
+  #card {
+    height: 45vh;
+    width: 40vw;
+  }
+
+  #image {
+    height: 30vh;
+    width: 40vw;
+    object-fit: contain;
+    overflow: hidden;
+  }
+
+  #infos {
+    margin-top: -2vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #title {
+    font-weight: bold;
+    font-size: 13px;
+    width: 90vw;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  #price {
+    font-size: 12px;
+  }
+
+  #addToCart {
+    height: 5vh;
+    width: 100%;
+    border: 0.3px solid #aaa;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: 0.2s;
+  }
 }

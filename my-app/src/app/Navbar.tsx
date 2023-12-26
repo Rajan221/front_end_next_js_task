@@ -1,11 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-
 import "./Styles/Navbar.css";
 
 interface NavigationProps {
   onSearch: (value: string) => void;
 }
 
+// NAVBAR FUNCTION STARTS HERE
 const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState("");
 
@@ -35,7 +35,6 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
             </button>
           </form>
         </div>
-        <div id="cart">Cart</div>
       </div>
     </React.Fragment>
   );

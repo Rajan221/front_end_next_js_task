@@ -4,6 +4,7 @@
   align-items: center;
   padding: 10px;
   box-shadow: 0 10px 10px #ddd;
+  border-radius: 10px;
 }
 
 #product {
@@ -51,11 +52,28 @@
   border-radius: 10px;
 }
 
-/* cart css */
-#cart {
-  background-color: black;
-  color: white;
-  padding: 15px;
-  font-size: 25px;
-  border-radius: 10px;
+/* for mobiles */
+
+@media only screen and (max-width: 600px) {
+  .Navbar {
+    box-shadow: 0 10px 10px #ddd;
+    padding: 5px;
+  }
+
+  #product {
+    display: none;
+  }
+  #searchForm {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  #searchBox {
+    height: 35px;
+    width: 70vw;
+    border: 0.3px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #ddd;
+  }
 }

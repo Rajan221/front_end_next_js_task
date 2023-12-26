@@ -1,10 +1,10 @@
 import React from "react";
 import "./Styles/Product.css";
 import ProductCard from "./Reusables/ProductCard";
-import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
+// TYPE DECLARATION
 interface Product {
   id: number;
   image: string;
@@ -17,6 +17,7 @@ interface ProductProps {
   searchTerm: string;
 }
 
+// FUNCTION FOR FETCHING DATA
 const fetchData = async (): Promise<Product[]> => {
   const response = await fetch("https://fakestoreapi.com/products");
   if (!response.ok) {
@@ -25,6 +26,7 @@ const fetchData = async (): Promise<Product[]> => {
   return response.json();
 };
 
+// USING TANSTACK TO FETCH DATA
 const Product: React.FC<ProductProps> = ({ searchTerm }) => {
   const { isPending, error, data } = useQuery<Product[]>({
     queryKey: ["Data"],
@@ -32,29 +34,30 @@ const Product: React.FC<ProductProps> = ({ searchTerm }) => {
   });
 
   if (isPending) {
-    return <div className="message">Loading...</div>;
+    return <div className="message">Loading...</div>; //LOADING MESSAGE
   }
 
   if (error) {
     return (
-      <div className="message">An error has occurred: {error.message}</div>
+      <div className="message">An error has occurred: {error.message}</div> //ERROR MESSAGE
     );
   }
 
+  // FILTERING LOGIC OF SEARCH
   const filteredData = data.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  console.log(searchTerm);
-
   return (
     <React.Fragment>
+      {/* CONDITIONAL RENDERING */}
       {searchTerm.length ? (
         <div id="top">Showing Results for "{searchTerm}" </div>
       ) : (
         <div id="top">Our Products </div>
       )}
 
+      {/* SHOWING DATA FROM API TO THE CARDS COMPONENT */}
       <div className="Cards">
         {filteredData.length ? (
           filteredData.map((datas) => (
@@ -78,7 +81,7 @@ const Product: React.FC<ProductProps> = ({ searchTerm }) => {
             </Link>
           ))
         ) : (
-          <p style={{ textAlign: "center" }}>No Products Found</p>
+          <div className="noProd">No Products Found</div>
         )}
       </div>
     </React.Fragment>

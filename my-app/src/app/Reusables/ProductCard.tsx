@@ -1,3 +1,4 @@
+// CARD COMPONENT
 import React, { useState, MouseEvent } from "react";
 import "./ProductCard.css";
 
@@ -10,10 +11,11 @@ interface ProductProps {
 const ProductCard: React.FC<ProductProps> = (props) => {
   const [cart, setCart] = useState<string>("Add to Cart");
 
+  // HANDLING CART CLICK FUNCTION
   const handleCart = (event: MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
+    alert("Added to Cart Successfully");
     setCart("Added");
-    console.log("Clicked");
   };
 
   return (

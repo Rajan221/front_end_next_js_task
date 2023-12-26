@@ -1,19 +1,21 @@
+/* TOP TITLE CSS */
 #top {
   margin-top: 3vh;
-
   font-size: 30px;
   padding: 10px;
   font-weight: 400;
   user-select: none;
 }
 
+/* CARDS LAYOUT CSS GRID */
+
 .Cards {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-
+  grid-template-columns: 1fr 1fr 1fr 1fr; /*4 CARDS PER ROW */
+  padding-left: 20px;
   justify-content: space-between;
-  grid-row-gap: 50px;
+  grid-row-gap: 60px;
 }
 
 .Link {
@@ -21,8 +23,32 @@
   color: inherit;
 }
 
+/* LOADING OR ERROR MESSAGE  */
 .message {
   text-align: center;
   font-size: 40px;
   margin-top: 10vh;
+}
+
+/* CSS FOR MESSAGE WHEN NO PRODUCT FOUND */
+.noProd {
+  font-size: 20px;
+  margin-top: 10vh;
+  text-align: center;
+  width: 80vw;
+}
+
+/* FOR RESPONSIVE */
+@media only screen and (max-width: 600px) {
+  #top {
+    font-size: 25px;
+  }
+  .Cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 10px;
+    justify-content: space-between;
+    grid-row-gap: 50px;
+  }
 }

@@ -12,6 +12,7 @@
   background-color: black;
   color: white;
   border-radius: 10px;
+  caret-color: transparent;
 }
 
 /* for products description and image */
@@ -35,7 +36,7 @@
 .category {
   font-size: 15px;
   box-shadow: 0 0 10px #888;
-  width: 100px;
+  width: 8vw;
   padding: 5px;
   border-radius: 20px;
 }
@@ -65,6 +66,7 @@
   border-radius: 5px;
   transition: 0.3s;
   box-shadow: 0 10px 15px #888;
+  caret-color: transparent;
 }
 
 .buttons div:hover {
@@ -72,4 +74,37 @@
 
   box-shadow: 0 10px 25px #888;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  #prodContainer {
+    display: block;
+    margin-top: 20px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .prodTitle {
+    font-size: 20px;
+  }
+
+  .prodImage {
+    height: 30vh;
+  }
+
+  .prodDescription {
+    font-size: 15px;
+  }
+  .category {
+    font-size: 10px;
+    width: 30vw;
+  }
+
+  .price {
+    font-size: 17px;
+  }
+
+  .buttons div {
+    font-size: 15px;
+  }
 }
