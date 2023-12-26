@@ -75,14 +75,14 @@
   }
 
   #image {
-    height: 30vh;
+    height: 25vh;
     width: 40vw;
     object-fit: contain;
     overflow: hidden;
   }
 
   #infos {
-    margin-top: -2vh;
+    margin-top: 5vh;
     width: 100%;
     display: flex;
     justify-content: space-between;

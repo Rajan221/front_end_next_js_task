@@ -93,7 +93,7 @@ const Details: React.FC<ParamsType> = ({ params }) => {
               src={product.image}
               alt="product"
               height={300}
-              width={600}
+              width={300}
             />
 
             <div className="prodInfo">

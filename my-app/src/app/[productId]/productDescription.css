@@ -26,7 +26,8 @@
 }
 
 .prodImage {
-  height: 50vh;
+  height: 40vh;
+  width: 25vw;
 }
 
 .prodInfo {
@@ -108,7 +109,8 @@
   }
 
   .prodImage {
-    height: 30vh;
+    height: 40vh;
+    width: 60vw;
   }
 
   .prodDescription {
