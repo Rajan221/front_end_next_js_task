@@ -57,7 +57,7 @@ const Product: React.FC<ProductProps> = ({ searchTerm, setSearchTerm }) => {
     <React.Fragment>
       {/* CONDITIONAL RENDERING */}
       {searchTerm.length ? (
-        <div id="top">Showing Results for "{searchTerm}" </div>
+        <div id="top">Showing Results for {searchTerm} </div>
       ) : (
         <div id="top">Our Products </div>
       )}

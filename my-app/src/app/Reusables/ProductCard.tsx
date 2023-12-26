@@ -1,6 +1,7 @@
 // CARD COMPONENT
 import React, { useState, MouseEvent } from "react";
 import "./ProductCard.css";
+import Image from "next/image";
 
 interface ProductProps {
   source: string;
@@ -20,7 +21,13 @@ const ProductCard: React.FC<ProductProps> = (props) => {
 
   return (
     <div id="card">
-      <img id="image" src={props.source} alt="Product" />
+      <Image
+        id="image"
+        src={props.source}
+        alt="Product"
+        height={800}
+        width={800}
+      />
       <div>
         <div id="infos">
           <div id="title">{props.title}</div>

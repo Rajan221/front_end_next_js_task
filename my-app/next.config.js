@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    appDir: true,
+// next.config.js
+module.exports = {
+  images: {
+    domains: ["fakestoreapi.com"], // Add the domain(s) for the images
   },
-}
-
-module.exports = nextConfig
+};

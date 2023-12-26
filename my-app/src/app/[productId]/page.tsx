@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./productDescription.css";
 import ProductCard from "../Reusables/ProductCard";
 import Link from "next/link";
+import Image from "next/image";
 
 type ParamsType = {
   params: {
@@ -87,7 +88,13 @@ const Details: React.FC<ParamsType> = ({ params }) => {
           <div className="prodTitle">{product.title}</div>
 
           <div id="prodContainer">
-            <img className="prodImage" src={product.image} alt="product" />
+            <Image
+              className="prodImage"
+              src={product.image}
+              alt="product"
+              height={300}
+              width={600}
+            />
 
             <div className="prodInfo">
               <div className="prodDescription">
