@@ -133,9 +133,10 @@
   }
 
   .Cards {
-    width: 100%;
+    width: 110%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-left: -25px;
     padding-left: 10px;
     justify-content: space-between;
     grid-row-gap: 50px;

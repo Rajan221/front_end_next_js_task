@@ -47,11 +47,16 @@
     font-size: 25px;
   }
   .Cards {
-    width: 100%;
+    width: 110%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-left: 10px;
-    justify-content: space-between;
+    /* padding-left: 10px; */
+    overflow-y: visible;
+
+    margin-left: -25px;
+
+    padding-left: 15px;
+    justify-content: space-around;
     grid-row-gap: 50px;
   }
 }
