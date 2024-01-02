@@ -16,7 +16,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSearch(searchValue); // Trigger the search with the entered value
+    onSearch(searchValue);
   };
 
   const home = () => {

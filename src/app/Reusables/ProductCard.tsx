@@ -53,9 +53,9 @@ const ProductCard: React.FC<ProductProps> = (props) => {
         id="image"
         src={props.source}
         alt="Product"
-        height={800}
-        width={800}
-        priority={true}
+        height={200}
+        width={200}
+        loading="lazy"
       />
       <div>
         <div id="infos">

@@ -4,6 +4,8 @@ import ProductCard from "./Reusables/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
+import Head from "next/head";
+
 // TYPE DECLARATION
 interface Product {
   id: number;
@@ -35,12 +37,12 @@ const Product: React.FC<ProductProps> = ({ searchTerm, setSearchTerm }) => {
   });
 
   if (isPending) {
-    return <div className="message">Loading...</div>; //LOADING MESSAGE
+    return <div className="message">Loading...</div>;
   }
 
   if (error) {
     return (
-      <div className="message">An error has occurred: {error.message}</div> //ERROR MESSAGE
+      <div className="message">An error has occurred: {error.message}</div>
     );
   }
 
@@ -55,6 +57,10 @@ const Product: React.FC<ProductProps> = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <React.Fragment>
+      <Head>
+        <title>Home Page</title>
+        <meta name="description" content="List of all products" />
+      </Head>
       {/* CONDITIONAL RENDERING */}
       {searchTerm.length ? (
         <div id="top">Showing Results for {searchTerm} </div>

@@ -5,7 +5,6 @@ interface Product {
   image: string;
   title: string;
   price: number;
-  // ... other properties if applicable
 }
 
 interface CartProviderProps {

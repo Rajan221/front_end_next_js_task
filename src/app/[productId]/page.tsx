@@ -6,6 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "../Navbar";
 import { useCart } from "../CartContext";
+import Head from "next/head";
+
+// for metadata
+import { generateMetadata, Metadata } from "./metadataUtils";
 
 type ParamsType = {
   params: {
@@ -26,6 +30,9 @@ const Details: React.FC<ParamsType> = ({ params }) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [recomList, setRecomList] = useState<Product[]>([]);
   const { addToCart, cartItems } = useCart();
+
+  //for metadata
+  const [metadata, setMetadata] = useState<Metadata | null>(null);
 
   async function getProductsByCategory(category: string) {
     try {
@@ -80,16 +87,6 @@ const Details: React.FC<ParamsType> = ({ params }) => {
   const handleShopNow = () => {
     alert("Not Implemented yet.");
   };
-  // const handleAddtoCart = () => {
-  //   alert("Added to Cart Successfully");
-  //   addToCart({
-  //     id: product.id,
-  //     image: product.source,
-  //     title: product.title,
-  //     price: product.price,
-  //   });
-  //   setCart("Added");
-  // };
 
   const handleAddtoCart = () => {
     if (product) {
@@ -104,9 +101,57 @@ const Details: React.FC<ParamsType> = ({ params }) => {
     console.log(searchValue);
   };
 
+  //for metadata
+  useEffect(() => {
+    async function fetchMetadata(productId: number) {
+      try {
+        const metadataResult: Metadata = await generateMetadata(productId);
+        setMetadata(metadataResult);
+      } catch (error) {
+        console.error("Error generating metadata:", error);
+      }
+    }
+
+    fetchMetadata(params.productId);
+  }, [params.productId]);
+
+  // Update the Head component when metadata changes
+  useEffect(() => {
+    if (metadata) {
+      document.title = metadata.title || "Default Title";
+      const metaDescription = document.querySelector(
+        'meta[name="description"]'
+      );
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          metadata.description || "Default Description"
+        );
+      }
+
+      // Set canonical URL
+      const linkElement = document.querySelector('link[rel="canonical"]');
+      if (linkElement) {
+        linkElement.setAttribute(
+          "href",
+          metadata.alternates.canonical || "default-canonical-url"
+        );
+      }
+    }
+  }, [metadata]);
+
   return (
     <div id="body">
+      {metadata && (
+        <Head>
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} />
+
+          <link rel="canonical" href={metadata.alternates.canonical} />
+        </Head>
+      )}
       <Navigation onSearch={handleSearch} />
+
       {product ? (
         <div id="description">
           <div className="prodTitle">{product.title}</div>
@@ -116,8 +161,9 @@ const Details: React.FC<ParamsType> = ({ params }) => {
               className="prodImage"
               src={product.image}
               alt="product"
-              height={300}
-              width={300}
+              height={200}
+              width={200}
+              loading="lazy"
             />
 
             <div className="prodInfo">
