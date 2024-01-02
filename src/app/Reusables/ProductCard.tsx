@@ -56,6 +56,7 @@ const ProductCard: React.FC<ProductProps> = (props) => {
         height={200}
         width={200}
         loading="lazy"
+        sizes="(max-width: 600px) 100vw, 200px"
       />
       <div>
         <div id="infos">

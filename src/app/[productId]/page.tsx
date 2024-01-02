@@ -164,6 +164,7 @@ const Details: React.FC<ParamsType> = ({ params }) => {
               height={200}
               width={200}
               loading="lazy"
+              sizes="(max-width: 600px) 100vw, 200px"
             />
 
             <div className="prodInfo">
