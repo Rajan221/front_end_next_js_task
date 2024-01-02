@@ -17,6 +17,8 @@
   justify-content: space-around;
   grid-column-gap: 10px;
   grid-row-gap: 60px;
+  overflow: hidden;
+  padding-bottom: 30px;
 }
 
 .Link {
