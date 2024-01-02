@@ -4,6 +4,8 @@ import "./productDescription.css";
 import ProductCard from "../Reusables/ProductCard";
 import Link from "next/link";
 import Image from "next/image";
+import Navigation from "../Navbar";
+import { useCart } from "../CartContext";
 
 type ParamsType = {
   params: {
@@ -23,6 +25,7 @@ interface Product {
 const Details: React.FC<ParamsType> = ({ params }) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [recomList, setRecomList] = useState<Product[]>([]);
+  const { addToCart, cartItems } = useCart();
 
   async function getProductsByCategory(category: string) {
     try {
@@ -77,12 +80,33 @@ const Details: React.FC<ParamsType> = ({ params }) => {
   const handleShopNow = () => {
     alert("Not Implemented yet.");
   };
+  // const handleAddtoCart = () => {
+  //   alert("Added to Cart Successfully");
+  //   addToCart({
+  //     id: product.id,
+  //     image: product.source,
+  //     title: product.title,
+  //     price: product.price,
+  //   });
+  //   setCart("Added");
+  // };
+
   const handleAddtoCart = () => {
-    alert("Added to Cart Successfully");
+    if (product) {
+      const { id, image, title, price } = product;
+
+      alert("Added to Cart Successfully" + id);
+      addToCart({ id, image, title, price });
+    }
+  };
+
+  const handleSearch = (searchValue: string) => {
+    console.log(searchValue);
   };
 
   return (
-    <div>
+    <div id="body">
+      <Navigation onSearch={handleSearch} />
       {product ? (
         <div id="description">
           <div className="prodTitle">{product.title}</div>
@@ -105,7 +129,8 @@ const Details: React.FC<ParamsType> = ({ params }) => {
                 <br />
                 {product.description}
               </div>
-              <div className="category">{product.category}</div>
+              <br />
+
               <div className="price">Price: ${product.price}</div>
 
               <div className="buttons">
@@ -137,6 +162,7 @@ const Details: React.FC<ParamsType> = ({ params }) => {
             >
               <ProductCard
                 key={datas.id}
+                id={datas.id}
                 source={datas.image}
                 title={datas.title}
                 price={datas.price}

@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import Navigation from "./Navbar";
 import Product from "./Product";
-import styles from "./page.module.css";
+import "./page.css";
+import { CartProvider } from "./CartContext";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // FOR TANSTACK
@@ -17,13 +19,15 @@ function App(): JSX.Element {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <main className={styles.container}>
-        <Navigation onSearch={handleSearch} />
+    <CartProvider>
+      <QueryClientProvider client={queryClient}>
+        <main className="container">
+          <Navigation onSearch={handleSearch} />
 
-        <Product searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      </main>
-    </QueryClientProvider>
+          <Product searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </main>
+      </QueryClientProvider>
+    </CartProvider>
   );
 }
 

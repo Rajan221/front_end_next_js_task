@@ -1,6 +1,6 @@
 /* TOP TITLE CSS */
 #top {
-  margin-top: 3vh;
+  margin-top: 10vh;
   font-size: 30px;
   padding: 10px;
   font-weight: 400;
@@ -12,9 +12,10 @@
 .Cards {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; /*4 CARDS PER ROW */
-  padding-left: 20px;
-  justify-content: space-between;
+  grid-template-columns: auto auto auto auto; /*4 CARDS PER ROW */
+
+  justify-content: space-around;
+  grid-column-gap: 10px;
   grid-row-gap: 60px;
 }
 
@@ -35,7 +36,7 @@
   font-size: 20px;
   margin-top: 10vh;
   text-align: center;
-  width: 80vw;
+  width: 92vw;
 }
 
 /* FOR RESPONSIVE */

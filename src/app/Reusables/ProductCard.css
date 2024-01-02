@@ -1,12 +1,14 @@
 #card {
   height: 50vh;
-  width: 20vw;
+  width: 18vw;
   caret-color: transparent;
   position: relative;
   box-shadow: 0 8px 10px #aaa;
   padding: 3px;
   border-radius: 10px;
   transition: 0.4s;
+  padding: 10px;
+  overflow: hidden;
 }
 
 #card:hover {
@@ -18,7 +20,7 @@
 /* PRODUCT IMAGE CSS */
 #image {
   height: 30vh;
-  width: 20vw;
+  width: 18vw;
   object-fit: contain;
 }
 
@@ -58,7 +60,7 @@
   color: white;
 
   position: absolute;
-  bottom: 5px;
+  bottom: 8px;
   left: 0px;
   transition: 0.2s;
 }

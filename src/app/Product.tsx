@@ -79,6 +79,7 @@ const Product: React.FC<ProductProps> = ({ searchTerm, setSearchTerm }) => {
             >
               <ProductCard
                 key={datas.id}
+                id={datas.id}
                 source={datas.image}
                 title={datas.title}
                 price={datas.price}
